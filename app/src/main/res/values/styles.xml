@@ -1,0 +1,29 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="NavigationHeader">
+        <item name="android:drawablePadding">@dimen/spacing_extra_large</item>
+        <item name="android:drawableTop">@mipmap/ic_launcher_round</item>
+        <item name="android:textSize">@dimen/font_medium</item>
+    </style>
+
+    <style name="HeaderContainer">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:padding">@dimen/spacing_xxl</item>
+    </style>
+
+    <style name="Toolbar">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:minHeight">?android:attr/actionBarSize</item>
+    </style>
+
+</resources>

@@ -1,0 +1,62 @@
+<resources>
+
+    <!--Main screen strings-->
+    <string name="app_name">MyNews</string>
+    <string name="articles_up_to_date">Articles are up to date.</string>
+    <string name="no_internet_connection">Trouble connecting to the internet.. Please check your connection and try again.</string>
+    <string name="health">Health</string>
+    <string name="technology">Technology</string>
+    <string name="science">Science</string>
+    <string name="sports">Sports</string>
+    <string name="world">World</string>
+    <string name="null_string">null</string>
+    <string name="retry">Retry</string>
+    <string name="archived">Archived</string>
+    <string name="share_article_text">Check out this article: %1$s. Here\'s the link: %2$s</string>
+
+
+    <!--Nav Drawer strings-->
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="nav_header">2018 Antonio Rosario </string>
+    <string name="send_feedback">Send Feedback</string>
+    <string name="send_feedback_text">I\'d tell all my friends about this app if it had&#8230;</string>
+    <string name="send_feedback_subject">Top Stories Android Feedback"</string>
+
+    <!--Search strings-->
+    <string name="search">Search</string>
+    <string name="search_active_string_title">Search NY Times Articles</string>
+    <string name="search_active_state_string_subtitle">Find articles on health, tech, science, sports, or world news</string>
+    <string name="search_hint">Search</string>
+    <string name="search_offline_title_text">You\'re offline</string>
+    <string name="search_offline_subtitle_text">Please connect to the internet and try again</string>
+    <string name="search_no_results_title_text">Your search returned no results</string>
+    <string name="search_device_is_offline_title">Device is offline</string>
+    <string name="search_device_is_offline_subtitle">Make sure Wi-fi or cellular data is turned on.</string>
+
+    <!--Shared-->
+    <string name="share_article_subject">Check out this article!</string>
+    <string name="seconds_elapsed_time">s ago</string>
+    <string name="minutes_elapsed_time">m ago</string>
+    <string name="hours_elapsed_time">h ago</string>
+    <string name="days_elapsed_time">d ago</string>
+    <string name="send_article">Send article via</string>
+    <string name="error_articles_failed_to_load">Could not connect to the NyTimes Server, please try again.</string>
+    <string name="share_article_content_desc">Share article button</string>
+    <string name="archive_article_content_desc">Archive Article Button</string>
+    <string name="error_date">Invalid Date</string>
+
+    <!--Archived-->
+    <string name="article_archived_successful">Article archived.</string>
+    <string name="article_archived_failed">Article failed to archive.</string>
+    <string name="no_archived_articles">No archived articles. \n Long click on an article to archive. </string>
+    <string name="archive_confirmation_text">Article saved: %1$s</string>
+
+
+    <!--XML tools string attributes-->
+    <string name="article_title_test_text">This is a sample article title. This won\'t appear when we run the app.  </string>
+    <string name="article_abstract_test_text">This is a sample article abstract. This won\'t appear when we run the app.  </string>
+    <string name="publication_date_test_text"> 3m ago </string>
+    <string name="article_image_content_description">article image</string>
+
+</resources>

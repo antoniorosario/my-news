@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/sections"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_health_fragment"
+            android:icon="@drawable/ic_health"
+            android:title="@string/health" />
+
+        <item
+            android:id="@+id/nav_science_fragment"
+            android:icon="@drawable/ic_science"
+            android:title="@string/science" />
+
+        <item
+            android:id="@+id/nav_technology_fragment"
+            android:icon="@drawable/ic_technology"
+            android:title="@string/technology" />
+
+
+        <item
+            android:id="@+id/nav_sports_fragment"
+            android:icon="@drawable/ic_sports"
+            android:title="@string/sports" />
+
+        <item
+            android:id="@+id/nav_world_fragment"
+            android:icon="@drawable/ic_world"
+            android:title="@string/world" />
+
+
+    </group>
+
+    <group
+        android:id="@+id/more_sections"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_archived_article_activity"
+            android:checkable="false"
+            android:icon="@drawable/ic_archive"
+            android:title="@string/archived" />
+
+        <!--<item-->
+        <!--android:id="@+id/nav_article_search_fragment"-->
+        <!--android:checkable="false"-->
+        <!--android:title="@string/search" />-->
+        <!--android:icon="@drawable/ic_action_search"-->
+
+
+    </group>
+
+    <group
+        android:id="@+id/settings"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/action_send_feedback"
+            android:checkable="false"
+            android:icon="@drawable/ic_feedback"
+            android:title="@string/send_feedback" />
+
+
+    </group>
+</menu>

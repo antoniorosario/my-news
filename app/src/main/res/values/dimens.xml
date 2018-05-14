@@ -1,0 +1,30 @@
+<resources>
+    <!-- typical spacing between two views -->
+    <dimen name="spacing_small">4dp</dimen>
+    <dimen name="spacing_normal">8dp</dimen>
+    <dimen name="spacing_large">12dp</dimen>
+    <dimen name="spacing_extra_large">16dp</dimen>
+    <dimen name="spacing_xxl">48dp</dimen>
+
+    <!-- font sizes -->
+    <dimen name="font_small">12sp</dimen>
+    <dimen name="font_medium">14sp</dimen>
+    <dimen name="font_large">16sp</dimen>
+
+    <!--  sizes of  search icon in search fragment -->
+    <dimen name="width_search_icon">100dp</dimen>
+    <dimen name="height_search_icon">100dp</dimen>
+
+    <!-- thumbnail size -->
+    <dimen name="standard_thumbnail_image_height">75dp</dimen>
+    <dimen name="standard_thumbnail__image_width">75dp</dimen>
+
+    <!--card dp values -->
+    <dimen name="card_content_padding">10dp</dimen>
+    <dimen name="card_content_padding_bottom">0dp</dimen>
+    <dimen name="card_max_elevation">1dp</dimen>
+    <dimen name="card_corner_radius">0dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
+    <dimen name="image_button_width">25dp</dimen>
+    <dimen name="image_button_height">25dp</dimen>
+</resources>
