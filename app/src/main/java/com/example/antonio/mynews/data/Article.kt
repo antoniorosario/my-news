@@ -3,9 +3,12 @@ package com.example.antonio.mynews.data
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
+import android.arch.persistence.room.TypeConverters
+import com.example.antonio.mynews.data.source.local.ArticleTypeConverters
 import com.google.gson.annotations.SerializedName
 
 @Entity
+@TypeConverters(ArticleTypeConverters::class)
 data class Article(
         @PrimaryKey var id: String,
         @ColumnInfo(name = "section")
@@ -18,11 +21,9 @@ data class Article(
         @ColumnInfo(name = "publishedDate")
         @SerializedName("published_date")
         val publishedDate: String,
-        //TODO Research type converters
-//        @ColumnInfo(name = "multimedia")
-//        @SerializedName("multimedia")
-//        @TypeConverters(MultimediaTypeConverters::class)
-//        val multimedia: List<Multimedium>,
+        @ColumnInfo(name = "multimedia")
+        @SerializedName("multimedia")
+        val multimedia: List<Multimedium>,
         @ColumnInfo(name = "url")
         val url: String,
         @ColumnInfo(name = "isArchived")

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.example.antonio.mynews.R
 import com.example.antonio.mynews.data.Article
 import com.example.antonio.mynews.utils.getElapsedPublicationTime
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.article_list_item.view.*
 import org.joda.time.DateTime
 
@@ -79,17 +80,16 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleHolder>() {
 
                 val publishedDateTime = DateTime(DateTime.parse(article.publishedDate))
                 publicationDateTextView.text = publishedDateTime.getElapsedPublicationTime(context)
-                //TODO Research type converters and get this to work
-//                if (multimedia.isNotEmpty()) {
-//                    Picasso
-//                            .with(context)
-//                            .load(multimedia[0].url)
-//                            .fit()
-//                            .into(articleImageImageView)
-//                } else {
+                if (multimedia.isNotEmpty()) {
+                    Picasso
+                            .with(context)
+                            .load(multimedia[0].url)
+                            .fit()
+                            .into(articleImageImageView)
+                } else {
 
                 articleImageImageView.visibility = View.GONE
-//                }
+                }
             }
         }
     }

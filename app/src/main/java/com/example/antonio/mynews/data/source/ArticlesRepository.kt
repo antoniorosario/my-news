@@ -87,8 +87,6 @@ class ArticlesRepository(
     }
 
     private fun cache(article: Article) {
-        //TODO  Add multimedia
-
         val cachedArticle =
                 Article(
                         article.id,
@@ -96,6 +94,7 @@ class ArticlesRepository(
                         article.title,
                         article._abstract,
                         article.publishedDate,
+                        article.multimedia,
                         article.url
                 )
         cachedArticles[cachedArticle.id] = cachedArticle
