@@ -4,12 +4,14 @@ import com.example.antonio.mynews.data.Article
 import com.example.antonio.mynews.data.source.ArticlesDataSource
 import com.example.antonio.mynews.data.source.ArticlesRepository
 
-//TODO Extract common Presenter methods into a BasePresenter
-class ArchivePresenter(private val articlesRepository: ArticlesRepository) {
+class ArchivePresenter(private val articlesRepository: ArticlesRepository, val archiveView: ArchiveContract.View) : ArchiveContract.Presenter {
 
-    lateinit var archiveView: ArchiveView
 
-    fun loadArchivedArticles() {
+    override fun start() {
+        loadArchivedArticles()
+    }
+
+    override fun loadArchivedArticles() {
         articlesRepository.getArchivedArticles(object : ArticlesDataSource.LoadArticlesCallback {
             override fun onArticlesLoaded(articles: List<Article>) {
                 archiveView.showArticles(articles)
@@ -21,17 +23,19 @@ class ArchivePresenter(private val articlesRepository: ArticlesRepository) {
         })
     }
 
-    fun onArticleClicked(articleUrl: String) {
+
+    override fun onArticleClicked(articleUrl: String) {
         archiveView.navigateToArticleUrl(articleUrl)
     }
 
-    fun onArchiveArticleButtonClicked(article: Article) {
+    override fun onArchiveArticleButtonClicked(article: Article) {
         article.isArchived = !article.isArchived
         articlesRepository.updateArticle(article)
         archiveView.showArticleArchiveConfirmation(article.isArchived)
     }
 
-    fun onShareArticleButtonClicked(articleTitle: String, articleUrl: String) {
+    override fun onShareArticleButtonClicked(articleTitle: String, articleUrl: String) {
         archiveView.navigateToShareArticleChooser(articleTitle, articleUrl)
     }
+
 }

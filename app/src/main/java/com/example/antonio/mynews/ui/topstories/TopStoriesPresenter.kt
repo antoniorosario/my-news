@@ -4,12 +4,18 @@ import com.example.antonio.mynews.data.Article
 import com.example.antonio.mynews.data.source.ArticlesDataSource
 import com.example.antonio.mynews.data.source.ArticlesRepository
 
-//TODO Extract common Presenter methods into a BasePresenter
-class TopStoriesPresenter(private val articlesRepository: ArticlesRepository) {
+class TopStoriesPresenter(private val articlesRepository: ArticlesRepository, val topStoriesView: TopStoriesContract.View) : TopStoriesContract.Presenter {
 
-    lateinit var topStoriesView: TopStoriesView
 
-    fun loadArticles(section: String) {
+    init {
+        topStoriesView.presenter = this
+    }
+
+    override fun start() {
+        loadArticles(topStoriesView.section)
+    }
+
+    override fun loadArticles(section: String) {
 
         articlesRepository.getArticles(section, object : ArticlesDataSource.LoadArticlesCallback {
             override fun onArticlesLoaded(articles: List<Article>) {
@@ -23,7 +29,7 @@ class TopStoriesPresenter(private val articlesRepository: ArticlesRepository) {
         })
     }
 
-    fun fetchArticles(section: String) {
+    override fun fetchArticles(section: String) {
         articlesRepository.getArticlesFromRemoteDataSource(section, object : ArticlesDataSource.LoadArticlesCallback {
             override fun onArticlesLoaded(articles: List<Article>) {
                 topStoriesView.hideRefreshingIndicator()
@@ -39,17 +45,18 @@ class TopStoriesPresenter(private val articlesRepository: ArticlesRepository) {
         })
     }
 
-    fun onArticleClicked(articleUrl: String) {
+    override fun onArticleClicked(articleUrl: String) {
         topStoriesView.navigateToArticleUrl(articleUrl)
     }
 
-    fun onArchiveArticleButtonClicked(article: Article) {
+    override fun onArchiveArticleButtonClicked(article: Article) {
         article.isArchived = !article.isArchived
         articlesRepository.updateArticle(article)
         topStoriesView.showArticleArchiveConfirmation(article.isArchived)
     }
 
-    fun onShareArticleButtonClicked(articleTitle: String, articleUrl: String) {
+    override fun onShareArticleButtonClicked(articleTitle: String, articleUrl: String) {
         topStoriesView.navigateToShareArticleChooser(articleTitle, articleUrl)
     }
+
 }

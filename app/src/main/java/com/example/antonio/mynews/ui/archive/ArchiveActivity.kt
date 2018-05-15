@@ -15,19 +15,18 @@ import com.example.antonio.mynews.utils.snackbar
 import kotlinx.android.synthetic.main.activity_archive.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-class ArchiveActivity : AppCompatActivity(), ArchiveView {
+class ArchiveActivity : AppCompatActivity(), ArchiveContract.View {
+    override lateinit var presenter: ArchiveContract.Presenter
     private lateinit var articleAdapter: ArticleAdapter
-    private lateinit var archivePresenter: ArchivePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_archive)
         articleAdapter = Injector.provideArticleAdapter()
-        archivePresenter = Injector.provideArchivePresenter(this)
-        archivePresenter.archiveView = this
+        presenter = Injector.provideArchivePresenter(this, this)
         initToolbar()
         initRecyclerView()
-        archivePresenter.loadArchivedArticles()
+        presenter.start()
     }
 
     private fun initToolbar() {
@@ -42,15 +41,15 @@ class ArchiveActivity : AppCompatActivity(), ArchiveView {
         article_recycler_view.layoutManager = Injector.provideLayoutManager(this)
         articleAdapter.articleClickListener = object : OnArticleClickListener {
             override fun onArticleClicked(articleUrl: String) {
-                archivePresenter.onArticleClicked(articleUrl)
+                presenter.onArticleClicked(articleUrl)
             }
 
             override fun onShareArticleButtonClicked(articleTitle: String, articleUrl: String) {
-                archivePresenter.onShareArticleButtonClicked(articleTitle, articleUrl)
+                presenter.onShareArticleButtonClicked(articleTitle, articleUrl)
             }
 
             override fun onArchiveArticleButtonClicked(article: Article) {
-                archivePresenter.onArchiveArticleButtonClicked(article)
+                presenter.onArchiveArticleButtonClicked(article)
             }
         }
 
@@ -64,7 +63,8 @@ class ArchiveActivity : AppCompatActivity(), ArchiveView {
     }
 
     override fun showArticleArchiveConfirmation(isArchived: Boolean) {
-        snackbar(article_recycler_view,
+        snackbar(
+                article_recycler_view,
                 getString(R.string.archive_confirmation_text, isArchived.toString())
         )
     }

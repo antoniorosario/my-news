@@ -88,7 +88,7 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleHolder>() {
                             .into(articleImageImageView)
                 } else {
 
-                articleImageImageView.visibility = View.GONE
+                    articleImageImageView.visibility = View.GONE
                 }
             }
         }

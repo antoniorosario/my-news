@@ -16,18 +16,18 @@ import com.example.antonio.mynews.utils.indefiniteSnackbar
 import com.example.antonio.mynews.utils.snackbar
 import kotlinx.android.synthetic.main.fragment_top_stories.*
 
-class TopStoriesFragment : Fragment(), TopStoriesView {
+class TopStoriesFragment : Fragment(), TopStoriesContract.View {
 
-    private lateinit var topStoriesPresenter: TopStoriesPresenter
+    override lateinit var presenter: TopStoriesContract.Presenter
+    override lateinit var section: String
     private lateinit var articleAdapter: ArticleAdapter
-    private lateinit var section: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         section = arguments!!.getString(ARG_SECTION)
-        topStoriesPresenter = Injector.provideTopStoriesPresenter(activity!!)
-        topStoriesPresenter.topStoriesView = this
         articleAdapter = Injector.provideArticleAdapter()
+        presenter = Injector.provideTopStoriesPresenter(activity!!, this)
+        presenter.start()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
@@ -36,10 +36,10 @@ class TopStoriesFragment : Fragment(), TopStoriesView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
-        topStoriesPresenter.loadArticles(section)
+        presenter.start()
 
         swipe_refresh_layout.setOnRefreshListener {
-            topStoriesPresenter.fetchArticles(section)
+            presenter.fetchArticles(section)
         }
     }
 
@@ -47,15 +47,15 @@ class TopStoriesFragment : Fragment(), TopStoriesView {
         article_recycler_view.layoutManager = Injector.provideLayoutManager(activity)
         articleAdapter.articleClickListener = object : OnArticleClickListener {
             override fun onArticleClicked(articleUrl: String) {
-                topStoriesPresenter.onArticleClicked(articleUrl)
+                presenter.onArticleClicked(articleUrl)
             }
 
             override fun onShareArticleButtonClicked(articleTitle: String, articleUrl: String) {
-                topStoriesPresenter.onShareArticleButtonClicked(articleTitle, articleUrl)
+                presenter.onShareArticleButtonClicked(articleTitle, articleUrl)
             }
 
             override fun onArchiveArticleButtonClicked(article: Article) {
-                topStoriesPresenter.onArchiveArticleButtonClicked(article)
+                presenter.onArchiveArticleButtonClicked(article)
             }
         }
         article_recycler_view.adapter = articleAdapter
@@ -73,7 +73,7 @@ class TopStoriesFragment : Fragment(), TopStoriesView {
                     article_recycler_view,
                     R.string.no_internet_connection,
                     R.string.retry,
-                    { topStoriesPresenter.loadArticles(section) }
+                    { presenter.loadArticles(section) }
             )
 
     override fun showArticleArchiveConfirmation(isArchived: Boolean) {

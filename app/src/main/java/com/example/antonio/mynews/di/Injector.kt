@@ -19,9 +19,13 @@ import com.example.antonio.mynews.data.source.local.MyNewsDatabase
 import com.example.antonio.mynews.data.source.remote.ArticlesRemoteDataSource
 import com.example.antonio.mynews.network.ApiKeyInterceptor
 import com.example.antonio.mynews.network.NYTimesApi
-import com.example.antonio.mynews.ui.HomePresenter
+import com.example.antonio.mynews.ui.BaseArticlePresenter
 import com.example.antonio.mynews.ui.adapter.ArticleAdapter
+import com.example.antonio.mynews.ui.archive.ArchiveContract
 import com.example.antonio.mynews.ui.archive.ArchivePresenter
+import com.example.antonio.mynews.ui.home.HomeContract
+import com.example.antonio.mynews.ui.home.HomePresenter
+import com.example.antonio.mynews.ui.topstories.TopStoriesContract
 import com.example.antonio.mynews.ui.topstories.TopStoriesPagerAdapter
 import com.example.antonio.mynews.ui.topstories.TopStoriesPresenter
 import com.example.antonio.mynews.utils.AppExecutors
@@ -32,7 +36,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 // TODO use Dagger 2 for DI.
 object Injector {
-    fun provideTopStoriesPresenter(uiController: FragmentActivity) = TopStoriesPresenter(provideArticlesRepository(uiController))
+
+    fun provideTopStoriesPresenter(uiController: FragmentActivity, topStoriesView: TopStoriesContract.View) =
+            TopStoriesPresenter(provideArticlesRepository(uiController), topStoriesView)
 
     private fun provideArticlesRepository(context: Context): ArticlesRepository {
         val myNewsDatabase = provideMyNewsDatabase(context)
@@ -82,10 +88,10 @@ object Injector {
 
     private fun provideAccessTokenInterceptor(apiKey: String) = ApiKeyInterceptor(apiKey)
 
-    fun provideMainPresenter(): HomePresenter = HomePresenter()
+    fun provideHomePresenter(homeView: HomeContract.View): HomePresenter = HomePresenter(homeView)
 
-    fun provideArchivePresenter(uiController: FragmentActivity) =
-            ArchivePresenter(provideArticlesRepository(uiController))
+    fun provideArchivePresenter(uiController: FragmentActivity, archiveView: ArchiveContract.View) =
+            ArchivePresenter(provideArticlesRepository(uiController), archiveView)
 
 
 }
