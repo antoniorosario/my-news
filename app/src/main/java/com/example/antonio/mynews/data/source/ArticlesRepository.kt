@@ -41,8 +41,8 @@ class ArticlesRepository(
         articlesLocalDataSource.saveArticles(articles)
     }
 
-    override fun updateArticle(article: Article) {
-        articlesLocalDataSource.updateArticle(article)
+    override fun updateArticle(id: String, isArchived:Boolean) {
+        articlesLocalDataSource.updateArticle(id, isArchived)
     }
 
     override fun deleteArticles(id: String) {

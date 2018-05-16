@@ -4,7 +4,10 @@ import com.example.antonio.mynews.data.Article
 import com.example.antonio.mynews.data.source.ArticlesDataSource
 import com.example.antonio.mynews.data.source.ArticlesRepository
 
-class ArchivePresenter(private val articlesRepository: ArticlesRepository, val archiveView: ArchiveContract.View) : ArchiveContract.Presenter {
+class ArchivePresenter(
+        private val articlesRepository: ArticlesRepository,
+        val archiveView: ArchiveContract.View
+) : ArchiveContract.Presenter {
 
 
     override fun start() {
@@ -28,9 +31,9 @@ class ArchivePresenter(private val articlesRepository: ArticlesRepository, val a
         archiveView.navigateToArticleUrl(articleUrl)
     }
 
-    override fun onArchiveArticleButtonClicked(article: Article) {
+    override fun onArchiveArticleButtonClicked(article:Article) {
         article.isArchived = !article.isArchived
-        articlesRepository.updateArticle(article)
+        articlesRepository.updateArticle(article.id, article.isArchived)
         archiveView.showArticleArchiveConfirmation(article.isArchived)
     }
 

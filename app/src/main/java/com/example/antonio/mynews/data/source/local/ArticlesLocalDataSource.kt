@@ -1,5 +1,6 @@
 package com.example.antonio.mynews.data.source.local
 
+import android.util.Log
 import com.example.antonio.mynews.data.Article
 import com.example.antonio.mynews.data.source.ArticlesDataSource
 import com.example.antonio.mynews.utils.AppExecutors
@@ -8,6 +9,7 @@ class ArticlesLocalDataSource(
         private val appExecutors: AppExecutors,
         private val articlesDao: ArticlesDao
 ) : ArticlesDataSource {
+
 
     override fun getArticles(section: String, callback: ArticlesDataSource.LoadArticlesCallback) {
         appExecutors.diskIO.execute {
@@ -27,8 +29,15 @@ class ArticlesLocalDataSource(
         appExecutors.diskIO.execute { articlesDao.insertArticles(articles) }
     }
 
-    override fun updateArticle(article: Article) {
-        appExecutors.diskIO.execute { articlesDao.updateArticle(article) }
+    override fun updateArticle(id: String, isArchived: Boolean) {
+        // SQLite does not have a boolean data type so Room maps it to an INTEGER column, mapping
+        // true to 1 and false to 0.
+        val isArchivedAsInt =
+                when (isArchived) {
+                    true -> 1
+                    false -> 0
+                }
+        appExecutors.diskIO.execute { articlesDao.updateArticle(id, isArchivedAsInt) }
     }
 
     override fun deleteArticles(id: String) {

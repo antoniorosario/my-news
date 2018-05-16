@@ -46,13 +46,13 @@ class ArticlesRemoteDataSource(private val nyTimesApi: NYTimesApi) : ArticlesDat
 
     }
 
-    override fun updateArticle(article: Article) {
+    override fun updateArticle(id: String, isArchived: Boolean) {
         // We don't control the api so don't do anything.
     }
 
     override fun deleteArticles(id: String) {
-        // We don't control the api so don't do anything.
     }
+
 
     override fun getArchivedArticles(callback: ArticlesDataSource.LoadArticlesCallback) {
         // We don't control the api so don't do anything.
