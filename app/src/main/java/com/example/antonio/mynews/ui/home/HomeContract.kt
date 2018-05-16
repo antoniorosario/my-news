@@ -9,7 +9,8 @@ interface HomeContract {
         fun navigateToEmailClient()
         fun navigateToSelectedTab(tabPosition: Int)
         fun navigateToArchiveScreen()
-        fun setUpUI()
+        fun setUpViewPagerAndTabs()
+        fun setUpNavigationDrawer()
     }
 
     interface Presenter : BasePresenter {

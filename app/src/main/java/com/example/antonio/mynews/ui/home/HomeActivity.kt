@@ -42,13 +42,7 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
         drawerToggle.onConfigurationChanged(newConfig)
     }
 
-    override fun setUpUI() {
-        setUpViewPagerAndTabs()
-        setSupportActionBar(toolbar)
-        setUpNavigationDrawer()
-    }
-
-    private fun setUpViewPagerAndTabs() {
+    override fun setUpViewPagerAndTabs() {
         pagerAdapter = Injector.provideTopStoriesPagerAdapter(supportFragmentManager, resources)
         view_pager.adapter = pagerAdapter
         view_pager.offscreenPageLimit = OFF_SCREEN_PAGE_LIMIT
@@ -65,7 +59,8 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
         })
     }
 
-    private fun setUpNavigationDrawer() {
+    override fun setUpNavigationDrawer() {
+        setSupportActionBar(toolbar)
         drawerToggle = Injector.provideActionBarDrawerToggle(
                 this,
                 drawer_layout,

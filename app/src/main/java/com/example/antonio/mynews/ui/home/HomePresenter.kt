@@ -7,7 +7,8 @@ class HomePresenter(private val homeView: HomeContract.View) : HomeContract.Pres
     }
 
     override fun start() {
-        homeView.setUpUI()
+        homeView.setUpNavigationDrawer()
+        homeView.setUpViewPagerAndTabs()
     }
 
     override fun onSendFeedbackClicked() {
