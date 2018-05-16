@@ -9,6 +9,9 @@ class ArchivePresenter(
         val archiveView: ArchiveContract.View
 ) : ArchiveContract.Presenter {
 
+    init {
+        archiveView.presenter = this
+    }
 
     override fun start() {
         loadArchivedArticles()
