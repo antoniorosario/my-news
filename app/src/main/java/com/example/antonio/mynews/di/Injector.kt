@@ -19,7 +19,6 @@ import com.example.antonio.mynews.data.source.local.MyNewsDatabase
 import com.example.antonio.mynews.data.source.remote.ArticlesRemoteDataSource
 import com.example.antonio.mynews.network.ApiKeyInterceptor
 import com.example.antonio.mynews.network.NYTimesApi
-import com.example.antonio.mynews.ui.BaseArticlePresenter
 import com.example.antonio.mynews.ui.adapter.ArticleAdapter
 import com.example.antonio.mynews.ui.archive.ArchiveContract
 import com.example.antonio.mynews.ui.archive.ArchivePresenter

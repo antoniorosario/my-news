@@ -6,9 +6,8 @@ import okhttp3.Response
 class ApiKeyInterceptor(private val apiKey: String) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
-        if(apiKey.isEmpty()){
-            TODO("Sign up for a NYTimes API key at: https://developer.nytimes.com/signup")
-        }
+        if (apiKey.isEmpty()) TODO("Sign up for a NYTimes API key at: https://developer.nytimes.com/signup")
+
         val original = chain.request()
         val originalHttpUrl = original.url()
 

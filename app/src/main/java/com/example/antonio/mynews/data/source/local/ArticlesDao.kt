@@ -12,7 +12,6 @@ interface ArticlesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertArticles(articles: List<Article>)
 
-    //TODO Update article isArchived value instead of inserting a new article object into the DB.
     @Query("UPDATE Article SET isArchived = :isArchived WHERE id = :id")
     fun updateArticle(id: String, isArchived: Int)
 
@@ -23,7 +22,7 @@ interface ArticlesDao {
     fun loadArchivedArticles(): List<Article>
 
     @Query("SELECT * FROM Article WHERE id = :id")
-    fun loadArticleByID(id:String): Article?
+    fun loadArticleByID(id: String): Article?
 
     @Query("DELETE FROM Article WHERE id = :id")
     fun deleteArticleById(id: String): Int

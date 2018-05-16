@@ -121,5 +121,4 @@ class TopStoriesFragment : Fragment(), TopStoriesContract.View {
             return fragment
         }
     }
-
 }

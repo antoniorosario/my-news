@@ -18,9 +18,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class HomeActivity : AppCompatActivity(), HomeContract.View {
-    companion object {
-        const val OFF_SCREEN_PAGE_LIMIT = 2
-    }
 
     override lateinit var presenter: HomeContract.Presenter
     private lateinit var pagerAdapter: TopStoriesPagerAdapter
@@ -131,4 +128,9 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
     override fun navigateToArchiveScreen() {
         startActivity(ArchiveActivity.newIntent(this))
     }
+
+    companion object {
+        const val OFF_SCREEN_PAGE_LIMIT = 2
+    }
+
 }

@@ -34,7 +34,7 @@ class ArchivePresenter(
         archiveView.navigateToArticleUrl(articleUrl)
     }
 
-    override fun onArchiveArticleButtonClicked(article:Article) {
+    override fun onArchiveArticleButtonClicked(article: Article) {
         article.isArchived = !article.isArchived
         articlesRepository.updateArticle(article.id, article.isArchived)
         archiveView.showArticleArchiveConfirmation(article.isArchived)

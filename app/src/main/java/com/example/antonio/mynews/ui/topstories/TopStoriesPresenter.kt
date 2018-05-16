@@ -9,7 +9,6 @@ class TopStoriesPresenter(
         val topStoriesView: TopStoriesContract.View
 ) : TopStoriesContract.Presenter {
 
-
     init {
         topStoriesView.presenter = this
     }
@@ -52,7 +51,7 @@ class TopStoriesPresenter(
         topStoriesView.navigateToArticleUrl(articleUrl)
     }
 
-    override fun onArchiveArticleButtonClicked(article:Article) {
+    override fun onArchiveArticleButtonClicked(article: Article) {
         article.isArchived = !article.isArchived
         articlesRepository.updateArticle(article.id, article.isArchived)
         topStoriesView.showArticleArchiveConfirmation(article.isArchived)

@@ -14,9 +14,7 @@ interface HomeContract {
 
     interface Presenter : BasePresenter {
         fun onSendFeedbackClicked()
-
         fun onTabSelected(tabPosition: Int)
-
         fun onArchivedDrawerItemClicked()
     }
 }

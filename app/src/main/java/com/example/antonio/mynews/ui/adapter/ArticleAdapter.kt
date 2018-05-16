@@ -59,7 +59,6 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleHolder>() {
         private val shareArticleButton = itemView.share_article_button
         private val archiveArticleButton = itemView.archive_article_button
 
-
         fun bindArticle(article: Article, articleClickListener: OnArticleClickListener) {
 
             itemView.setOnClickListener({

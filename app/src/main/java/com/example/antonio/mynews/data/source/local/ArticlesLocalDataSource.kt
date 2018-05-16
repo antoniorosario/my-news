@@ -1,6 +1,5 @@
 package com.example.antonio.mynews.data.source.local
 
-import android.util.Log
 import com.example.antonio.mynews.data.Article
 import com.example.antonio.mynews.data.source.ArticlesDataSource
 import com.example.antonio.mynews.utils.AppExecutors
@@ -9,7 +8,6 @@ class ArticlesLocalDataSource(
         private val appExecutors: AppExecutors,
         private val articlesDao: ArticlesDao
 ) : ArticlesDataSource {
-
 
     override fun getArticles(section: String, callback: ArticlesDataSource.LoadArticlesCallback) {
         appExecutors.diskIO.execute {
